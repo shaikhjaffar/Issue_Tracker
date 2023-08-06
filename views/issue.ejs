@@ -1,0 +1,79 @@
+<%-include('layout/header.ejs') %>
+
+
+
+  <div class="container mt-5">
+    <div class="row">
+     
+      <div class="col-md-4 border border-4">
+        <h2>Project Details</h2>
+        <p><strong> Name: </strong> <%= project.name %></p>
+        <p><strong>Project Description: </strong> <%= project.Description %></p>
+        <p><strong>Author: </strong><%= project.Author %></p>
+        
+        <h2>Previous Issues</h2>
+        <div class="issue-list">
+          <h4>Issue #1: Sample Issue Title</h4>
+          <p>Sample issue description goes here.</p>
+        </div>
+        <div class="issue-list">
+          <h4>Issue #2: Another Issue Title</h4>
+          <p>Another issue description goes here.</p>
+        </div>
+        <!-- Add more previous issue details here -->
+      </div>
+      <div class="col-md-8">
+        <h2>Create Issue</h2>
+        <form action="/createIssue/<%= project.id %>" method="post">
+          <div class="mb-3">
+            <label for="tittle"class="form-label">Issue Title</label>
+            <input type="text" name="tittle" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label for="Description" class="form-label">Issue Description</label>
+            <textarea class="form-control" name="Description" id="issueDescription"  rows="4" required></textarea>
+          </div>
+
+          <div class="row">
+            <div class="col">
+                <div class="mb-3">
+                    <label for="issueDescription" class="form-label">Issue Labels</label>
+                    <div class = "form-check">  
+                        <input class = "form-check-input"   
+                          type = "checkbox" id = "checkbox1" name = "Labels" value = "UI Issue" >  
+                        <label class = "form-check-label" >UI Issue</label>  
+                      </div>  
+                      <div class = "form-check">  
+                        <input class = "form-check-input"   
+                          type = "checkbox" id = "checkbox3" name = "Labels" value = "API Issue" >  
+                        <label class = "form-check-label">API Issue</label>  
+                      </div>  
+                      <div class = "form-check">  
+                        <input class = "form-check-input"   
+                          type = "checkbox" id = "checkbox3" name = "Labels" value = "Features" >  
+                        <label class = "form-check-label">Features</label>  
+                      </div>  
+                      <div class = "form-check">  
+                        <input class = "form-check-input"   
+                          type = "checkbox" id = "checkbox4" name = "Labels" value = "Other" >  
+                        <label class = "form-check-label">Other</label>  
+                      </div> 
+                  </div>
+            </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label for="Author" class="form-label">Author</label>
+                    <input type="text" class="form-control"  name="Author" required>
+                  </div>
+            </div>
+          <button type="submit" class="btn btn-primary">Create Issue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+          
+        
+
+<%-include('layout/footer.ejs')%>
+    
