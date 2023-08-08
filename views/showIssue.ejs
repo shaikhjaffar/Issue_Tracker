@@ -1,5 +1,5 @@
 <%-include('layout/header.ejs') %>
-
+<div class="container my-3">
        <% if (message) { %>
             <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
              <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
@@ -8,32 +8,33 @@
        <% } %>
         
              <% if (issue != '') { %>
-                <table class="table table-striped my-3">
+                <table class="table table-striped mt-5">
                     <thead>
                         <tr class="table-dark">
-                            <th>ID</th>
                             <th>Project Name</th>
-                            <th>Description</th>
+                            <th>Issue Title</th>
+                            <th>Issue Description</th>
+                            <th>Labels</th>
                             <th>Author</th>
-                            <th>Create Issue</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% issue.forEach((row,index) => { %>
-                            <tr class="align-middle">
-                                <td><%= index+1  %></td>
-                                <td><%= row.name %></td>
-                                <td><%= row.Description %></td>
-                                <td><%= row.Author %></td>
-                                <td  style="display: flex;justify-content:center">
-                                    <a href="/edit/<%= row.id %>" class="text-sucess">
-                                        <i class="fas fa-edit fa-lg mx-1">
-        
-                                        </i>
-        
-                                    </a>
-                                </td>
-                            </tr>
+                        <% project.forEach((row,index) => { %>
+                            <% row.Issue.forEach(element => { %>
+                                <tr class="align-middle">
+                                    <td><%= row.name %></td>
+                                    <td><%=element.Title %></td>
+                                    <td><%=element.Description%></td>
+                                    <td>
+                                        <% element.Labels.forEach(lable => { %>
+                                           <li><%= lable %></li>
+                                        <% }) %>
+                                     
+                                    </td>
+                                    <td><%= element.Author %></td>
+                                </tr>
+                            <% }) %>
+                           
 
                         <% }) %>
                        
@@ -44,7 +45,7 @@
                 
                 <h1 class="text-center text-secondary mt-5">No Issue</h1>
             <%  } %>
-          
+        </div>
       
 
 

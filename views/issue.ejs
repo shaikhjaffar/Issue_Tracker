@@ -12,14 +12,18 @@
         <p><strong>Author: </strong><%= project.Author %></p>
         
         <h2>Previous Issues</h2>
-        <div class="issue-list">
-          <h4>Issue #1: Sample Issue Title</h4>
-          <p>Sample issue description goes here.</p>
-        </div>
-        <div class="issue-list">
-          <h4>Issue #2: Another Issue Title</h4>
-          <p>Another issue description goes here.</p>
-        </div>
+        <% if (project.Issue != '') { %>
+           <% project.Issue.forEach((element,index) => { %>
+            <div class="issue-list">
+              <h4>Issue #<%= index+1  %>: <%= element.Title %></h4>
+              <p><%= element.Description %></p>
+              <p>Issue Labels:<% element.Labels.forEach(element => { %>
+                   <span style="display: inline-block; min-width: 100px;background-color: antiquewhite;text-align: center;"><%= element %></span>
+              <% }) %></p>
+            </div>
+           <% }) %>
+        <% } %>
+
         <!-- Add more previous issue details here -->
       </div>
       <div class="col-md-8">

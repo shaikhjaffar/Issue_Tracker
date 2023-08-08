@@ -1,0 +1,36 @@
+<%-include('layout/header.ejs') %>
+
+
+
+  <div class="container mt-5">
+    <div class="row">
+     
+      <div class="col border border-4">
+        <h2>Project Details</h2>
+        <p><strong> Name: </strong> <%= project.name %></p>
+        <p><strong>Project Description: </strong> <%= project.Description %></p>
+        <p><strong>Author: </strong><%= project.Author %></p>
+        
+        <h2>Previous Issues</h2>
+        <% if (project.Issue != '') { %>
+           <% project.Issue.forEach((element,index) => { %>
+            <div class="issue-list">
+              <h4>Issue #<%= index+1  %>: <%= element.Title %></h4>
+              <p><%= element.Description %></p>
+              <p>Issue Labels:<% element.Labels.forEach(element => { %>
+                   <span style="display: inline-block; min-width: 100px;background-color: antiquewhite;text-align: center;"><%= element %></span>
+              <% }) %></p>
+            </div>
+           <% }) %>
+        <% } %>
+
+        <!-- Add more previous issue details here -->
+      </div>
+    </div>
+  </div>
+
+          
+        
+
+<%-include('layout/footer.ejs')%>
+    

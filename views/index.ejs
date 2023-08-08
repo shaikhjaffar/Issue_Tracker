@@ -22,7 +22,9 @@
                     <% project.forEach((row,index) => { %>
                         <tr class="align-middle">
                             <td><%= index+1  %></td>
-                            <td><%= row.name %></td>
+                            <td><a href="/projectData/<%= row.id %>" class="text-sucess">
+                                <%= row.name %>
+                            </a></td>
                             <td><%= row.Description %></td>
                             <td><%= row.Author %></td>
                             <td  style="display: flex;justify-content:center">
