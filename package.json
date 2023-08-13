@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/shaikhjaffar/Issue_Tracker.git"
   },
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "keywords": [
     "Issue",
     "Tracker"
