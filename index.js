@@ -27,7 +27,7 @@ app.use((req,res,next)=>{
 //template engine
  app.set('view engine','ejs') 
 
-mongoose.connect(process.env.DB_URI, { useNewUrlParser:true})
+mongoose.connect("mongodb+srv://jaffarShaikh:jaffar@jaffar.sibfqaq.mongodb.net/", { useNewUrlParser:true})
 
 const db = mongoose.connection
 db.on('error',(error) => console.log(error))
